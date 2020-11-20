@@ -81,6 +81,6 @@ public class FootballClub extends SportsClub {
     public String toString() {
         return "Football Club[" + super.toString() + ", noOfWins: " + wins + ", noOfDraws: " + draws
                 + ", noOfDefeats: " + defeats + ", noOfScoredGoals: " + noOfScoredGoals + ", noOfReceivedGoals" + noOfReceivedGoals
-                + ", noOfPoints: " + noOfPoints + ", noOfMatchesPlayed" + noOfMatchesPlayed + "]";
+                + ", noOfPoints: " + noOfPoints + ", noOfMatchesPlayed: " + noOfMatchesPlayed + "]";
     }
 }

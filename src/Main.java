@@ -1,0 +1,108 @@
+import java.util.Scanner;
+
+public class Main {
+
+    private static LeagueManager premierLeagueManager = new PremierLeagueManager();
+    private static FootballClub club;
+
+    public static void main(String[] args){
+        mainMenu();
+    }
+
+    public static void mainMenu(){
+
+        Scanner sc = new Scanner(System.in);
+
+        while(true) {
+            System.out.println("-----------SL Premier League 2020-------------");
+            System.out.println("----------------Main Menu---------------------");
+            System.out.println("Press 1 : Add new club to the League ");
+            System.out.println("Press 2 : Delete existing club from League");
+            System.out.println("Press 3 : Display Statistics for the club");
+            System.out.println("Press 4 : Display the Premier League Table");
+            System.out.println("Press 5 : Quit");
+
+            System.out.println("Please Enter your choice : ");
+            String option = sc.nextLine();
+
+            int userChoice = 0;
+            try {
+                userChoice = Integer.parseInt(option);
+            } catch (NumberFormatException e) {
+                System.out.println("This is invalid");
+            }
+
+            switch(userChoice) {
+                case 1 :
+                    addClub();
+                    break;
+                case 2 :
+                    deleteClub();
+                    break;
+                case 3 :
+                    displayStatistics();
+                    break;
+                case 4 :
+                    displayLeagueTable();
+                    break;
+                case 5:
+                    System.out.println("Thank you for joined with us.\nHope to see you again!!!");
+                    System.exit(0);
+                default:
+                    System.out.println("Please Enter valid option !!!");
+            }
+        }
+    }
+
+    private static void addClub() {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the Name of the Club :");
+        String name = sc.nextLine();
+        System.out.println("Enter the Location of the Club :");
+        String location = sc.nextLine();
+        System.out.println("Enter the Number of Wins :");
+        int wins = sc.nextInt();
+        System.out.println("Enter the Number of Draws :");
+        int draws = sc.nextInt();
+        System.out.println("Enter the Number of Defeats :");
+        int defeats = sc.nextInt();
+        System.out.println("Enter the Number of Scored Goals :");
+        int noOfScoredGoals = sc.nextInt();
+        System.out.println("Enter the Number of ReceivedGoals :");
+        int noOfReceivedGoals = sc.nextInt();
+        System.out.println("Enter the Number of Points :");
+        int noOfPoints = sc.nextInt();
+        System.out.println("Enter the Number of Matches Played :");
+        int noOfMatchesPlayed = sc.nextInt();
+
+        club = new FootballClub(name,location,wins,draws,defeats,noOfScoredGoals,noOfReceivedGoals,noOfPoints,noOfMatchesPlayed);
+        premierLeagueManager.addClub(club);
+
+    }
+
+    private static void deleteClub() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the Name of the Club to Delete : ");
+        String name = sc.nextLine();
+        premierLeagueManager.deleteClub(name);
+        System.out.println(" ");
+    }
+
+    private static void displayStatistics() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the Name of the Club to Display Statistics : ");
+        String name = sc.nextLine();
+        premierLeagueManager.displayStatistics(name);
+        System.out.println(" ");
+    }
+
+    private static void displayLeagueTable() {
+        System.out.println("-----------Premier League Table------------");
+        premierLeagueManager.displayLeagueTable();
+        System.out.println(" ");
+    }
+
+
+}
