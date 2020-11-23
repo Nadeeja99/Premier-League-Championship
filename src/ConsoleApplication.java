@@ -1,21 +1,22 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Main {
+public class ConsoleApplication {
 
     private static LeagueManager premierLeagueManager = new PremierLeagueManager();
     private static FootballClub club;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         mainMenu();
     }
 
-    public static void mainMenu(){
+    public static void mainMenu() {
 
         Scanner sc = new Scanner(System.in);
 
-        while(true) {
-            System.out.println("-----------SL Premier League 2020-------------");
-            System.out.println("----------------Main Menu---------------------");
+        while (true) {
+            System.out.println("------------- Premier League 2020 -------------");
+            System.out.println("----------------- Main Menu -------------------");
             System.out.println("Press 1 : Add new club to the League ");
             System.out.println("Press 2 : Delete existing club from League");
             System.out.println("Press 3 : Display Statistics for the club");
@@ -32,24 +33,24 @@ public class Main {
                 System.out.println("This is invalid");
             }
 
-            switch(userChoice) {
-                case 1 :
+            switch (userChoice) {
+                case 1:
                     addClub();
                     break;
-                case 2 :
+                case 2:
                     deleteClub();
                     break;
-                case 3 :
+                case 3:
                     displayStatistics();
                     break;
-                case 4 :
+                case 4:
                     displayLeagueTable();
                     break;
                 case 5:
                     System.out.println("Thank you for joined with us.\nHope to see you again!!!");
                     System.exit(0);
                 default:
-                    System.out.println("Please Enter valid option !!!");
+                    System.out.println("Please Enter valid option !!! \n");
             }
         }
     }
@@ -58,34 +59,47 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter the Name of the Club :");
-        String name = sc.nextLine();
-        System.out.println("Enter the Location of the Club :");
-        String location = sc.nextLine();
-        System.out.println("Enter the Number of Wins :");
-        int wins = sc.nextInt();
-        System.out.println("Enter the Number of Draws :");
-        int draws = sc.nextInt();
-        System.out.println("Enter the Number of Defeats :");
-        int defeats = sc.nextInt();
-        System.out.println("Enter the Number of Scored Goals :");
-        int noOfScoredGoals = sc.nextInt();
-        System.out.println("Enter the Number of ReceivedGoals :");
-        int noOfReceivedGoals = sc.nextInt();
-        System.out.println("Enter the Number of Points :");
-        int noOfPoints = sc.nextInt();
-        System.out.println("Enter the Number of Matches Played :");
-        int noOfMatchesPlayed = sc.nextInt();
+        try {
+            System.out.println("Enter the Name of the Club :");
+            String name = sc.nextLine();
 
-        club = new FootballClub(name,location,wins,draws,defeats,noOfScoredGoals,noOfReceivedGoals,noOfPoints,noOfMatchesPlayed);
-        premierLeagueManager.addClub(club);
+            System.out.println("Enter the Location of the Club :");
+            String location = sc.nextLine();
 
+            System.out.println("Enter the Number of Wins :");
+            int wins = sc.nextInt();
+
+            System.out.println("Enter the Number of Draws :");
+            int draws = sc.nextInt();
+
+            System.out.println("Enter the Number of Defeats :");
+            int defeats = sc.nextInt();
+
+            System.out.println("Enter the Number of Scored Goals :");
+            int noOfScoredGoals = sc.nextInt();
+
+            System.out.println("Enter the Number of ReceivedGoals :");
+            int noOfReceivedGoals = sc.nextInt();
+
+            System.out.println("Enter the Number of Points :");
+            int noOfPoints = sc.nextInt();
+
+            System.out.println("Enter the Number of Matches Played :");
+            int noOfMatchesPlayed = sc.nextInt();
+
+            club = new FootballClub(name, location, wins, draws, defeats, noOfScoredGoals, noOfReceivedGoals, noOfPoints, noOfMatchesPlayed);
+            premierLeagueManager.addClub(club);
+            System.out.println(" ");
+
+        } catch (InputMismatchException e) {
+            System.out.println("Please Enter a valid Input !!! \n");
+        }
     }
 
     private static void deleteClub() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the Name of the Club to Delete : ");
-        String name = sc.nextLine();
+        String name = sc.nextLine().toLowerCase();
         premierLeagueManager.deleteClub(name);
         System.out.println(" ");
     }
@@ -93,7 +107,7 @@ public class Main {
     private static void displayStatistics() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the Name of the Club to Display Statistics : ");
-        String name = sc.nextLine();
+        String name = sc.nextLine().toLowerCase();
         premierLeagueManager.displayStatistics(name);
         System.out.println(" ");
     }
@@ -103,6 +117,5 @@ public class Main {
         premierLeagueManager.displayLeagueTable();
         System.out.println(" ");
     }
-
 
 }

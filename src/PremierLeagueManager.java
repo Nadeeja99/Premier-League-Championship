@@ -1,27 +1,26 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 public class PremierLeagueManager implements LeagueManager {
-
-    private final int noOfClubs = 2;
 
     private List<FootballClub> footballLeague = new ArrayList<>();
 
     @Override
     public void addClub(FootballClub club) {
-        if(footballLeague.size() == noOfClubs) {
-            System.out.println("The league is full.Can't add a another club");
-        }
 
-        if(footballLeague.contains(club.getName())){
-            System.out.println("This club is already in the league");
+        boolean clubName = false;
+
+        for (FootballClub newClub : footballLeague) {
+            if (newClub.getName().equals(club.getName())) {
+                System.out.println("This club is already in the league");
+                clubName = true;
+                break;
+            }
         }
-        else {
+        if (!clubName) {
             footballLeague.add(club);
-            System.out.println("Added to the League Successfully!!!");
-            System.out.println(footballLeague);
+            System.out.println("Club " + club.getName() + " added to the League Successfully!!!");
         }
     }
 
@@ -30,16 +29,16 @@ public class PremierLeagueManager implements LeagueManager {
 
         boolean clubName = false;
 
-        for(FootballClub club : footballLeague) {
-            if(club.getName().equals(name)){
+        for (FootballClub club : footballLeague) {
+            if (club.getName().equals(name)) {
                 footballLeague.remove(club);
                 clubName = true;
-                System.out.println("Club "+ club.getName()+" Deleted from League Successfully!!!");
+                System.out.println("Club " + club.getName() + " Deleted from League Successfully!!!");
                 break;
             }
         }
         if (!clubName) {
-            System.out.println("Please Check Again.No club like that in League");
+            System.out.println("Please Check Again.No club like '" + name + "' in League");
         }
     }
 
@@ -49,10 +48,10 @@ public class PremierLeagueManager implements LeagueManager {
         boolean clubName = false;
 
         for (FootballClub club : footballLeague) {
-            if(club.getName().equals(name)){
+            if (club.getName().equals(name)) {
                 System.out.println("----------Club Statistics-----------");
                 System.out.println("Club Name : " + club.getName());
-                System.out.println("Club Location : "  + club.getLocation());
+                System.out.println("Club Location : " + club.getLocation());
                 System.out.println("Number of matches Won : " + club.getWins());
                 System.out.println("Number of matches Draws : " + club.getWins());
                 System.out.println("Number of matches Defeats : " + club.getWins());
@@ -71,9 +70,11 @@ public class PremierLeagueManager implements LeagueManager {
     @Override
     public void displayLeagueTable() {
         Collections.sort(footballLeague, new PointComparator());
-        for(FootballClub club : footballLeague) {
-            System.out.println("Club: " + club.getName()+" Points: "+ club.getNoOfPoints()+" goal difference: "+ (club.getNoOfScoredGoals()-club.getNoOfReceivedGoals()));
+        for (FootballClub club : footballLeague) {
+            System.out.println("Club: " + club.getName() + " Points: " + club.getNoOfPoints()
+                    + " Goal Difference: " + (club.getNoOfScoredGoals() - club.getNoOfReceivedGoals()));
         }
     }
+
 }
 

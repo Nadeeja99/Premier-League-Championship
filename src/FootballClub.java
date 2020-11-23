@@ -21,7 +21,7 @@ public class FootballClub extends SportsClub {
         this.noOfMatchesPlayed = noOfMatchesPlayed;
     }
 
-    public int getWins(){
+    public int getWins() {
         return wins;
     }
 
@@ -29,7 +29,7 @@ public class FootballClub extends SportsClub {
         return draws;
     }
 
-    public int getDefeats(){
+    public int getDefeats() {
         return defeats;
     }
 
@@ -50,37 +50,37 @@ public class FootballClub extends SportsClub {
     }
 
     public void setWins(int wins) {
-        this.wins =wins;
+        this.wins = wins;
     }
 
-    public void setDraws(int draws){
+    public void setDraws(int draws) {
         this.draws = draws;
     }
 
     public void setDefeats(int defeats) {
-        this.defeats =defeats;
+        this.defeats = defeats;
     }
 
-    public void setNoOfScoredGoals(int noOfScoredGoals){
+    public void setNoOfScoredGoals(int noOfScoredGoals) {
         this.noOfScoredGoals = noOfScoredGoals;
     }
 
-    public void setNoOfReceivedGoals(int noOfReceivedGoals){
+    public void setNoOfReceivedGoals(int noOfReceivedGoals) {
         this.noOfReceivedGoals = noOfReceivedGoals;
     }
 
-    public void setNoOfPoints(int noOfPoints){
+    public void setNoOfPoints(int noOfPoints) {
         this.noOfPoints = noOfPoints;
     }
 
-    public void setNoOfMatchesPlayed(int noOfMatchesPlayed){
+    public void setNoOfMatchesPlayed(int noOfMatchesPlayed) {
         this.noOfMatchesPlayed = noOfMatchesPlayed;
     }
 
     @Override
     public String toString() {
         return "Football Club[" + super.toString() + ", noOfWins: " + wins + ", noOfDraws: " + draws
-                + ", noOfDefeats: " + defeats + ", noOfScoredGoals: " + noOfScoredGoals + ", noOfReceivedGoals" + noOfReceivedGoals
+                + ", noOfDefeats: " + defeats + ", noOfScoredGoals: " + noOfScoredGoals + ", noOfReceivedGoals: " + noOfReceivedGoals
                 + ", noOfPoints: " + noOfPoints + ", noOfMatchesPlayed: " + noOfMatchesPlayed + "]";
     }
 }
