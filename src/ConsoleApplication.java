@@ -21,7 +21,10 @@ public class ConsoleApplication {
             System.out.println("Press 2 : Delete existing club from League");
             System.out.println("Press 3 : Display Statistics for the club");
             System.out.println("Press 4 : Display the Premier League Table");
-            System.out.println("Press 5 : Quit");
+            System.out.println("Press 5 : Add a played match");
+            System.out.println("Press 6 : Save Details to the file");
+            System.out.println("Press 7 : Load Details from the file");
+            System.out.println("Press 8 : Quit");
 
             System.out.println("Please Enter your choice : ");
             String option = sc.nextLine();
@@ -47,6 +50,15 @@ public class ConsoleApplication {
                     displayLeagueTable();
                     break;
                 case 5:
+                    addPlayedMatch();
+                    break;
+                case 6:
+                    saveDetails();
+                    break;
+                case 7:
+                    loadDetails();
+                    break;
+                case 8:
                     System.out.println("Thank you for joined with us.\nHope to see you again!!!");
                     System.exit(0);
                 default:
@@ -99,7 +111,7 @@ public class ConsoleApplication {
     private static void deleteClub() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the Name of the Club to Delete : ");
-        String name = sc.nextLine().toLowerCase();
+        String name = sc.nextLine();
         premierLeagueManager.deleteClub(name);
         System.out.println(" ");
     }
@@ -107,7 +119,7 @@ public class ConsoleApplication {
     private static void displayStatistics() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the Name of the Club to Display Statistics : ");
-        String name = sc.nextLine().toLowerCase();
+        String name = sc.nextLine();
         premierLeagueManager.displayStatistics(name);
         System.out.println(" ");
     }
@@ -117,5 +129,18 @@ public class ConsoleApplication {
         premierLeagueManager.displayLeagueTable();
         System.out.println(" ");
     }
+
+    private static void addPlayedMatch() {
+        premierLeagueManager.addPlayedMatch();
+    }
+
+    private static void saveDetails() {
+        premierLeagueManager.saveDetails();
+    }
+
+    private static void loadDetails() {
+        premierLeagueManager.loadDetails();
+    }
+
 
 }

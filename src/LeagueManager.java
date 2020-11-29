@@ -4,4 +4,7 @@ public interface LeagueManager {
     void deleteClub(String name);
     void displayStatistics(String name);
     void displayLeagueTable();
+    void addPlayedMatch();
+    void saveDetails();
+    void loadDetails();
 }

@@ -1,4 +1,6 @@
-public class Match {
+import java.io.Serializable;
+
+public class Match implements Serializable {
 
     private FootballClub club1;
     private FootballClub club2;
@@ -52,5 +54,10 @@ public class Match {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String toString(){
+        return "Match[" + date + ", Club 01: " + club1.getName() + ", Club 02: " + club2.getName()
+                + ", Club 01 Score: " + club1Score + ", Club 02 Score: " + club2Score + "]";
     }
 }

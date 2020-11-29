@@ -1,4 +1,6 @@
-public class Date {
+import java.io.Serializable;
+
+public class Date implements Serializable {
 
     private int day;
     private int month;
@@ -36,6 +38,6 @@ public class Date {
 
     @Override
     public String toString() {
-        return "DateTime{" + "Day=" + day + ", Month=" + month + ", Year=" + year + "}";
+        return "Date : " + day + "/" + month + "/" + year ;
     }
 }
