@@ -1,15 +1,21 @@
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ConsoleApplication {
+public class ConsoleApplication extends Application {
 
     private static final LeagueManager premierLeagueManager = new PremierLeagueManager();
 
     public static void main(String[] args) {
+        launch(args);
+    }
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
         // load the previous details
         premierLeagueManager.loadDetails();
-
         mainMenu();
     }
 
@@ -25,7 +31,8 @@ public class ConsoleApplication {
             System.out.println("Press 3 : Display Statistics for the club");
             System.out.println("Press 4 : Display the Premier League Table");
             System.out.println("Press 5 : Add a played match");
-            System.out.println("Press 6 : Quit");
+            System.out.println("Press 6 : Open GUI");
+            System.out.println("Press 7 : Quit");
 
             System.out.println("Please Enter your choice : ");
             String option = sc.nextLine();
@@ -54,6 +61,9 @@ public class ConsoleApplication {
                     addPlayedMatch();
                     break;
                 case 6:
+                    viewGUI();
+                    break;
+                case 7:
                     System.out.println("Thank you for joined with us.\nHope to see you again!!!");
                     System.exit(0);
                 default:
@@ -131,6 +141,10 @@ public class ConsoleApplication {
     private static void addPlayedMatch() {
         premierLeagueManager.addPlayedMatch();
         System.out.println(" ");
+    }
+
+    private static void viewGUI() {
+        premierLeagueManager.viewGUI();
     }
 
 }

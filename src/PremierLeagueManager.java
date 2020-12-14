@@ -1,3 +1,7 @@
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
 import java.io.*;
 import java.util.*;
 
@@ -213,6 +217,12 @@ public class PremierLeagueManager implements LeagueManager {
             System.out.println("File cannot find");
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void viewGUI() {
+        LeagueGUI leagueGUI = new LeagueGUI();
+        leagueGUI.tableView(footballLeague);
     }
 
 }

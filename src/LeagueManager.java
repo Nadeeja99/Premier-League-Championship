@@ -7,4 +7,5 @@ public interface LeagueManager {
     void addPlayedMatch();
     void saveDetails();
     void loadDetails();
+    void viewGUI();
 }
