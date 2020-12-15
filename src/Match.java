@@ -16,6 +16,10 @@ public class Match implements Serializable {
         this.date = date;
     }
 
+    public Match(){
+
+    }
+
     public FootballClub getClub1() {
         return club1;
     }

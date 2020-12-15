@@ -222,7 +222,7 @@ public class PremierLeagueManager implements LeagueManager {
     @Override
     public void viewGUI() {
         LeagueGUI leagueGUI = new LeagueGUI();
-        leagueGUI.tableView(footballLeague);
+        leagueGUI.tableView(footballLeague,matchDetails);
     }
 
 }
