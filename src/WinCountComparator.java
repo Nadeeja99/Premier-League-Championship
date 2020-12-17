@@ -11,7 +11,7 @@ public class WinCountComparator implements Comparator<FootballClub> {
         else if (club1.getWins() < club2.getWins())
             return 1;
 
-            // if both club has same points then it checks goal difference
+        // if both club has same win count then it checks goal difference
         else {
             int goalDiff1 = club1.getNoOfScoredGoals() - club1.getNoOfReceivedGoals();
             int goalDiff2 = club2.getNoOfScoredGoals() - club2.getNoOfReceivedGoals();

@@ -2,13 +2,13 @@ import java.io.Serializable;
 
 public class Match implements Serializable {
 
-    private FootballClub club1;
-    private FootballClub club2;
+    private String club1;
+    private String club2;
     private int club1Score;
     private int club2Score;
     private Date date;
 
-    public Match(FootballClub club1, FootballClub club2, int club1Score, int club2Score, Date date){
+    public Match(String club1, String club2, int club1Score, int club2Score, Date date){
         this.club1 = club1;
         this.club2 = club2;
         this.club1Score = club1Score;
@@ -20,11 +20,11 @@ public class Match implements Serializable {
 
     }
 
-    public FootballClub getClub1() {
+    public String getClub1() {
         return club1;
     }
 
-    public FootballClub getClub2() {
+    public String getClub2() {
         return club2;
     }
 
@@ -40,11 +40,11 @@ public class Match implements Serializable {
         return date;
     }
 
-    public void setClub1(FootballClub club1) {
+    public void setClub1(String club1) {
         this.club1 = club1;
     }
 
-    public void setClub2(FootballClub club2) {
+    public void setClub2(String club2) {
         this.club2 = club2;
     }
 
@@ -61,7 +61,7 @@ public class Match implements Serializable {
     }
 
     public String toString(){
-        return "Match[" + date + ", Club 01: " + club1.getName() + ", Club 02: " + club2.getName()
+        return "Match[" + date + ", Club 01: " + club1 + ", Club 02: " + club2
                 + ", Club 01 Score: " + club1Score + ", Club 02 Score: " + club2Score + "]";
     }
 }

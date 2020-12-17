@@ -1,7 +1,3 @@
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
 import java.io.*;
 import java.util.*;
 
@@ -16,14 +12,14 @@ public class PremierLeagueManager implements LeagueManager {
         boolean clubName = false;
 
         for (FootballClub newClub : footballLeague) {
-            if (newClub.getName().equalsIgnoreCase(club.getName())) {
+            if (newClub.getName().equalsIgnoreCase(club.getName())) {    // check the club is already in the League
                 System.out.println("This club is already in the league");
                 clubName = true;
                 break;
             }
         }
         if (!clubName) {
-            footballLeague.add(club);
+            footballLeague.add(club);  // if the club isn't in the League add it
             System.out.println("Club " + club.getName() + " added to the League Successfully!!!");
         }
     }
@@ -34,8 +30,8 @@ public class PremierLeagueManager implements LeagueManager {
         boolean clubName = false;
 
         for (FootballClub club : footballLeague) {
-            if (club.getName().equalsIgnoreCase(name)) {
-                footballLeague.remove(club);
+            if (club.getName().equalsIgnoreCase(name)) {  // check the club is in the League
+                footballLeague.remove(club);              // if the club is in the League remove it
                 clubName = true;
                 System.out.println("Club " + club.getName() + " Deleted from League Successfully!!!");
                 break;
@@ -74,7 +70,7 @@ public class PremierLeagueManager implements LeagueManager {
     @Override
     public void displayLeagueTable() {
         System.out.println("-----------Premier League Table------------");
-        Collections.sort(footballLeague, new PointComparator());
+        Collections.sort(footballLeague, new PointComparator());   // sorting premierLeague according to the points
         for (FootballClub club : footballLeague) {
             System.out.println("Club: " + club.getName() + "  Points: " + club.getNoOfPoints()
                     + "  Wins: " + club.getWins() + "  Defeats: " + club.getDefeats() + "  Draws:  " + club.getDraws()
@@ -104,7 +100,7 @@ public class PremierLeagueManager implements LeagueManager {
             String club1Name = sc.next();
             FootballClub club1 = null;
             for (FootballClub club : footballLeague) {
-                if (club.getName().equalsIgnoreCase(club1Name))
+                if (club.getName().equalsIgnoreCase(club1Name))    // check the club is in the League
                     club1 = club;
             }
             if (club1 == null) {
@@ -138,7 +134,7 @@ public class PremierLeagueManager implements LeagueManager {
                 return;
             }
 
-            Match match = new Match(club1, club2, club1Score, club2Score, matchDate);
+            Match match = new Match(club1.getName(), club2.getName(), club1Score, club2Score, matchDate);  // assign match Details to the Match
             matchDetails.add(match);
             System.out.println("Match Details Added to the League Successfully!!!");
 
@@ -150,6 +146,7 @@ public class PremierLeagueManager implements LeagueManager {
             club1.setNoOfMatchesPlayed(club1.getNoOfMatchesPlayed() + 1);
             club2.setNoOfMatchesPlayed(club2.getNoOfMatchesPlayed() + 1);
 
+            // checks the win & defeat
             if (club1Score > club2Score) {
                 club1.setNoOfPoints(club1.getNoOfPoints() + 2);
                 club1.setWins(club1.getWins() + 1);

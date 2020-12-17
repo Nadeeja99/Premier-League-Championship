@@ -39,7 +39,7 @@ public class ConsoleApplication extends Application {
 
             int userChoice = 0;
             try {
-                userChoice = Integer.parseInt(option);
+                userChoice = Integer.parseInt(option);  // validate user inputs
             } catch (NumberFormatException e) {
                 System.out.println("This is invalid");
             }
@@ -108,6 +108,7 @@ public class ConsoleApplication extends Application {
             System.out.println("Enter the Number of Matches Played :");
             int noOfMatchesPlayed = sc.nextInt();
 
+            // assign userInputs to the FootballClub
             FootballClub club = new FootballClub(name, location, wins, draws, defeats, noOfScoredGoals, noOfReceivedGoals, noOfPoints, noOfMatchesPlayed);
             premierLeagueManager.addClub(club);
             System.out.println(" ");

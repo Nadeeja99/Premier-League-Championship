@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public class Date implements Serializable {
+public class Date implements Comparable<Date>,Serializable {
 
     private int day;
     private int month;
@@ -38,6 +38,15 @@ public class Date implements Serializable {
 
     @Override
     public String toString() {
-        return "Date : " + day + "/" + month + "/" + year ;
+        return year + "/" + month + "/" + day ;
+    }
+
+    private int toMinute(){
+        return this.year * 365*24*60 + this.month * 30 * 24 * 60 + this.day * 24 *60;
+    }
+
+    @Override
+    public int compareTo(Date o) {
+        return this.toMinute() - o.toMinute();
     }
 }
