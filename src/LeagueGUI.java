@@ -171,14 +171,8 @@ public class LeagueGUI {
         btnSearch.setMinSize(40, 30);
 
         btnSearch.setOnAction(event -> {
-
             String givenDate = txtDate.getText();
-            if (!givenDate.isEmpty()) {
-                searchMatch(givenDate, matchDetails);
-                dateSort(givenDateMatches);
-            } else {
-                alertBox("Please input a Date !!!");
-            }
+            searchMatch(givenDate, matchDetails);
         });
 
         Button btnOk = new Button();
@@ -425,12 +419,32 @@ public class LeagueGUI {
 
     public void searchMatch(String givenDate, List<Match> matchDetails) {
 
-        givenDateMatches.removeAll(givenDateMatches);  // remove previous data
+        if (!givenDate.isEmpty()) {
 
-        for (Match match : matchDetails) {
-            if (givenDate.equals(match.getDate().toString())) {
-                givenDateMatches.add(match);
+            givenDateMatches.removeAll(givenDateMatches);  // remove previous data
+
+            for (Match match : matchDetails) {
+                if (givenDate.equals(match.getDate().toString())) {
+                    givenDateMatches.add(match);
+                }
             }
+
+            for (Match match : matchDetails) {
+                if (givenDate.equals(match.getDate().toString())) {
+                    dateSort(givenDateMatches);
+                    return;
+                }
+            }
+
+            for (Match match : matchDetails) {
+                if (!(givenDate.equals(match.getDate().toString()))) {
+                    alertBox("No match on this date.\nPlease search an another Date!");
+                    return;
+                }
+            }
+
+        } else {
+            alertBox("Please input a Date !!!");
         }
 
     }
@@ -447,7 +461,7 @@ public class LeagueGUI {
         lblMessage.setText(message);
         lblMessage.setStyle("-fx-font-weight: bold");
         lblMessage.setFont(new Font("Franklin Gothic Heavy", 16));
-        lblMessage.setLayoutX(20);
+        lblMessage.setLayoutX(30);
         lblMessage.setLayoutY(30);
 
         Button btnOk = new Button();
@@ -461,9 +475,10 @@ public class LeagueGUI {
         });
 
         AnchorPane anchorPane = new AnchorPane();
+        anchorPane.setStyle("-fx-base: #f5e35b;");
         anchorPane.getChildren().addAll(lblMessage, btnOk);
 
-        Scene scene = new Scene(anchorPane, 240, 150);
+        Scene scene = new Scene(anchorPane, 280, 150);
         stage.setScene(scene);
         stage.showAndWait();
 
