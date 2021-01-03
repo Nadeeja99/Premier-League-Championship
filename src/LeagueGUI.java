@@ -78,9 +78,9 @@ public class LeagueGUI {
         pointTable.getColumns().addAll(colClub, colMatchesPlayed, colWins, colDraws, colDefeats, colScoredGoals, colReceivedGoals, colPoints);
         pointTable.setMaxSize(612, 220);
 
-        Collections.sort(footballLeague, new PointComparator());
+        Collections.sort(footballLeague, new PointComparator());  // sorting the point table according to the points
         for (FootballClub club : footballLeague) {
-            pointTable.getItems().add(club);
+            pointTable.getItems().add(club);  // add items to the table
         }
 
         Button btnPointsSort = new Button();
@@ -92,7 +92,7 @@ public class LeagueGUI {
 
         btnPointsSort.setOnAction(event -> {
             pointTable.getItems().clear();
-            Collections.sort(footballLeague, new PointComparator());
+            Collections.sort(footballLeague, new PointComparator()); // sorting the point table according to the points
             for (FootballClub club : footballLeague) {
                 pointTable.getItems().add(club);
             }
@@ -107,7 +107,7 @@ public class LeagueGUI {
 
         btnScoredGoalsSort.setOnAction(event -> {
             pointTable.getItems().clear();
-            Collections.sort(footballLeague, new ScoredGoalsComparator());
+            Collections.sort(footballLeague, new ScoredGoalsComparator()); // sorting the point table according to the ScoredGoals
             for (FootballClub club : footballLeague) {
                 pointTable.getItems().add(club);
             }
@@ -122,7 +122,7 @@ public class LeagueGUI {
 
         btnWinSort.setOnAction(event -> {
             pointTable.getItems().clear();
-            Collections.sort(footballLeague, new WinCountComparator());
+            Collections.sort(footballLeague, new WinCountComparator()); // sorting the point table according to the win count
             for (FootballClub club : footballLeague) {
                 pointTable.getItems().add(club);
             }
@@ -209,6 +209,7 @@ public class LeagueGUI {
         int club1 = 0;
         int club2 = 0;
 
+        // generating random numbers until get two different numbers
         while (club1 == club2) {
             club1 = rand.nextInt(footballLeague.size());
             club2 = rand.nextInt(footballLeague.size());
@@ -424,13 +425,15 @@ public class LeagueGUI {
             givenDateMatches.removeAll(givenDateMatches);  // remove previous data
 
             for (Match match : matchDetails) {
+                // check are there any matches on given date
                 if (givenDate.equals(match.getDate().toString())) {
-                    givenDateMatches.add(match);
+                    givenDateMatches.add(match);     // add the match details to the arraylist
                 }
             }
 
             for (Match match : matchDetails) {
                 if (givenDate.equals(match.getDate().toString())) {
+                    // if there are matches on given date, call dateSort method to display those details
                     dateSort(givenDateMatches);
                     return;
                 }
@@ -438,12 +441,14 @@ public class LeagueGUI {
 
             for (Match match : matchDetails) {
                 if (!(givenDate.equals(match.getDate().toString()))) {
+                    // if there are not any match on given date, display an alert
                     alertBox("No match on this date.\nPlease search an another Date!");
                     return;
                 }
             }
 
         } else {
+            // if the date is empty, display an alert
             alertBox("Please input a Date !!!");
         }
 

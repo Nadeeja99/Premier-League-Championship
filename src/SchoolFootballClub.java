@@ -1,8 +1,8 @@
-public class SchoolFootballClubs extends FootballClub {
+public class SchoolFootballClub extends FootballClub {
 
     private String schName;
 
-    public SchoolFootballClubs(String clubName, String location, int wins,
+    public SchoolFootballClub(String clubName, String location, int wins,
                                int draws, int defeats, int noOfScoredGoals, int noOfReceivedGoals,
                                int noOfPoints, int noOfMatchesPlayed, String schName) {
 
